@@ -1,9 +1,14 @@
 package com.seinfeld.customer;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
-public record CustomerService(CustomerRepository customerRepository) {
+@RequiredArgsConstructor
+public class CustomerService {
+
+    private final CustomerRepository customerRepository;
+
     public void registerCustomer(CustomerRegistrationRequest customerRequest) {
         Customer customer = Customer.builder()
                 .firstName(customerRequest.firstName())
